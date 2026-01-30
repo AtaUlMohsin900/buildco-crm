@@ -18,6 +18,8 @@ import {
 } from 'react-icons/fi'
 import clsx from 'clsx'
 import logo from '../../assets/logo.png'
+import logoDark from '../../assets/logo-dark.png'
+import { useThemeStore } from '../../store/themeStore'
 
 const menuItems = [
     { name: 'Dashboard', path: '/dashboard', icon: FiHome },
@@ -37,6 +39,7 @@ const menuItems = [
 ]
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
+    const { isDark } = useThemeStore()
     return (
         <>
             {/* Mobile Overlay */}
@@ -82,7 +85,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
                     isOpen ? "justify-between" : "justify-center"
                 )}>
                     {isOpen ? (
-                        <img src={logo} alt="Buildco CRM" className="h-12 w-auto object-contain" />
+                        <img src={isDark ? logoDark : logo} alt="Buildco CRM" className="h-12 w-auto object-contain" />
                     ) : (
                         <div className="text-2xl font-bold text-primary-600">B</div>
                     )}
