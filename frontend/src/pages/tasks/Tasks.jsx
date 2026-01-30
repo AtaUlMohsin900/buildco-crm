@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { createColumnHelper } from '@tanstack/react-table'
 import { FiPlus, FiEdit2, FiTrash2, FiCheckCircle } from 'react-icons/fi'
 import PageHeader from '../../components/common/PageHeader'
@@ -56,9 +57,9 @@ const Tasks = () => {
                     <button className="p-1 text-gray-500 hover:text-success-600 transition-colors" title="Mark Complete">
                         <FiCheckCircle size={18} />
                     </button>
-                    <button className="p-1 text-gray-500 hover:text-primary-600 transition-colors">
+                    <Link to={`/tasks/${info.row.original.id}`} className="p-1 text-gray-500 hover:text-primary-600 transition-colors">
                         <FiEdit2 size={18} />
-                    </button>
+                    </Link>
                     <button
                         onClick={() => {
                             if (window.confirm('Are you sure you want to delete this task?')) {
@@ -80,10 +81,10 @@ const Tasks = () => {
                 title="Tasks"
                 parent="Dashboard"
                 action={
-                    <button className="btn-primary flex items-center space-x-2">
+                    <Link to="/tasks/new" className="btn-primary flex items-center space-x-2">
                         <FiPlus />
                         <span>New Task</span>
-                    </button>
+                    </Link>
                 }
             />
 

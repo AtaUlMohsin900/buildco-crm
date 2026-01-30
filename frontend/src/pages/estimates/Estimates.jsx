@@ -84,10 +84,10 @@ const Estimates = () => {
                 title="Estimates"
                 parent="Dashboard"
                 action={
-                    <button className="btn-primary flex items-center space-x-2">
+                    <Link to="/estimates/new" className="btn-primary flex items-center space-x-2">
                         <FiPlus />
                         <span>New Estimate</span>
-                    </button>
+                    </Link>
                 }
             />
 

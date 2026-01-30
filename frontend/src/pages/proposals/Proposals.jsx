@@ -56,9 +56,9 @@ const Proposals = () => {
                     <Link to={`/proposals/${info.row.original.id}`} className="p-1 text-gray-500 hover:text-primary-600 transition-colors">
                         <FiEye size={18} />
                     </Link>
-                    <button className="p-1 text-gray-500 hover:text-primary-600 transition-colors">
+                    <Link to={`/proposals/${info.row.original.id}`} className="p-1 text-gray-500 hover:text-primary-600 transition-colors">
                         <FiEdit2 size={18} />
-                    </button>
+                    </Link>
                     <button
                         onClick={() => {
                             if (window.confirm('Are you sure you want to delete this proposal?')) {
@@ -80,10 +80,10 @@ const Proposals = () => {
                 title="Proposals"
                 parent="Dashboard"
                 action={
-                    <button className="btn-primary flex items-center space-x-2">
+                    <Link to="/proposals/new" className="btn-primary flex items-center space-x-2">
                         <FiPlus />
                         <span>New Proposal</span>
-                    </button>
+                    </Link>
                 }
             />
             <DataTable data={data} columns={columns} />

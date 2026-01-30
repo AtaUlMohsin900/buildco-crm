@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { createColumnHelper } from '@tanstack/react-table'
 import { FiPlus, FiEdit2, FiTrash2, FiDownload } from 'react-icons/fi'
 import PageHeader from '../../components/common/PageHeader'
@@ -39,9 +40,9 @@ const Payments = () => {
                     <button className="p-1 text-gray-500 hover:text-primary-600 transition-colors" title="Download Receipt">
                         <FiDownload size={18} />
                     </button>
-                    <button className="p-1 text-gray-500 hover:text-primary-600 transition-colors">
+                    <Link to={`/payments/${info.row.original.id}`} className="p-1 text-gray-500 hover:text-primary-600 transition-colors">
                         <FiEdit2 size={18} />
-                    </button>
+                    </Link>
                     <button
                         onClick={() => {
                             if (window.confirm('Are you sure you want to delete this payment record?')) {
@@ -63,10 +64,10 @@ const Payments = () => {
                 title="Payments"
                 parent="Dashboard"
                 action={
-                    <button className="btn-primary flex items-center space-x-2">
+                    <Link to="/payments/new" className="btn-primary flex items-center space-x-2">
                         <FiPlus />
                         <span>Record Payment</span>
-                    </button>
+                    </Link>
                 }
             />
             <DataTable data={data} columns={columns} />

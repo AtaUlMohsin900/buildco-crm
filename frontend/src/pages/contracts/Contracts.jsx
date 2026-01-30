@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { createColumnHelper } from '@tanstack/react-table'
 import { FiPlus, FiEdit2, FiTrash2, FiDownload, FiEye } from 'react-icons/fi'
 import PageHeader from '../../components/common/PageHeader'
@@ -46,12 +47,12 @@ const Contracts = () => {
             header: 'Actions',
             cell: (info) => (
                 <div className="flex items-center space-x-2">
-                    <button className="p-1 text-gray-500 hover:text-primary-600 transition-colors" title="View Details">
+                    <Link to={`/contracts/${info.row.original.id}`} className="p-1 text-gray-500 hover:text-primary-600 transition-colors" title="View Details">
                         <FiEye size={18} />
-                    </button>
-                    <button className="p-1 text-gray-500 hover:text-primary-600 transition-colors">
+                    </Link>
+                    <Link to={`/contracts/${info.row.original.id}`} className="p-1 text-gray-500 hover:text-primary-600 transition-colors">
                         <FiEdit2 size={18} />
-                    </button>
+                    </Link>
                     <button className="p-1 text-gray-500 hover:text-gray-900 transition-colors" title="Download PDF">
                         <FiDownload size={18} />
                     </button>
@@ -76,10 +77,10 @@ const Contracts = () => {
                 title="Contracts"
                 parent="Dashboard"
                 action={
-                    <button className="btn-primary flex items-center space-x-2">
+                    <Link to="/contracts/new" className="btn-primary flex items-center space-x-2">
                         <FiPlus />
                         <span>New Contract</span>
-                    </button>
+                    </Link>
                 }
             />
             <DataTable data={data} columns={columns} />

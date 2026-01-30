@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { createColumnHelper } from '@tanstack/react-table'
 import { FiPlus, FiEdit2, FiTrash2, FiUserCheck, FiMail } from 'react-icons/fi'
 import PageHeader from '../../components/common/PageHeader'
@@ -51,9 +52,9 @@ const Leads = () => {
                     <button className="p-1 text-gray-500 hover:text-success-600 transition-colors" title="Convert to Client">
                         <FiUserCheck size={18} />
                     </button>
-                    <button className="p-1 text-gray-500 hover:text-primary-600 transition-colors">
+                    <Link to={`/leads/${info.row.original.id}`} className="p-1 text-gray-500 hover:text-primary-600 transition-colors">
                         <FiEdit2 size={18} />
-                    </button>
+                    </Link>
                     <button
                         onClick={() => {
                             if (window.confirm('Are you sure you want to delete this lead?')) {
@@ -75,10 +76,10 @@ const Leads = () => {
                 title="Leads"
                 parent="Dashboard"
                 action={
-                    <button className="btn-primary flex items-center space-x-2">
+                    <Link to="/leads/new" className="btn-primary flex items-center space-x-2">
                         <FiPlus />
                         <span>New Lead</span>
-                    </button>
+                    </Link>
                 }
             />
             <DataTable data={data} columns={columns} />

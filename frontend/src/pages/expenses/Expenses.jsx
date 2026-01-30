@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { createColumnHelper } from '@tanstack/react-table'
 import { FiPlus, FiEdit2, FiTrash2, FiFileText } from 'react-icons/fi'
 import PageHeader from '../../components/common/PageHeader'
@@ -36,12 +37,12 @@ const Expenses = () => {
             header: 'Actions',
             cell: (info) => (
                 <div className="flex items-center space-x-2">
-                    <button className="p-1 text-gray-500 hover:text-primary-600 transition-colors" title="View Receipt">
+                    <Link to={`/expenses/${info.row.original.id}`} className="p-1 text-gray-500 hover:text-primary-600 transition-colors" title="View Receipt">
                         <FiFileText size={18} />
-                    </button>
-                    <button className="p-1 text-gray-500 hover:text-primary-600 transition-colors">
+                    </Link>
+                    <Link to={`/expenses/${info.row.original.id}`} className="p-1 text-gray-500 hover:text-primary-600 transition-colors">
                         <FiEdit2 size={18} />
-                    </button>
+                    </Link>
                     <button
                         onClick={() => {
                             if (window.confirm('Are you sure you want to delete this expense?')) {
@@ -63,10 +64,10 @@ const Expenses = () => {
                 title="Expenses"
                 parent="Dashboard"
                 action={
-                    <button className="btn-primary flex items-center space-x-2">
+                    <Link to="/expenses/new" className="btn-primary flex items-center space-x-2">
                         <FiPlus />
                         <span>New Expense</span>
-                    </button>
+                    </Link>
                 }
             />
             <DataTable data={data} columns={columns} />

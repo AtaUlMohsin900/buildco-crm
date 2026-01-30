@@ -27,6 +27,7 @@ import Tickets from './pages/tickets/Tickets'
 import TicketForm from './pages/tickets/TicketForm'
 import Reports from './pages/reports/Reports'
 import Settings from './pages/settings/Settings'
+import UnderConstruction from './pages/UnderConstruction'
 import NotFound from './pages/NotFound'
 
 // Protected Route Component
@@ -71,32 +72,48 @@ function App() {
 
                 {/* Estimates */}
                 <Route path="/estimates" element={<Estimates />} />
+                <Route path="/estimates/new" element={<UnderConstruction title="New Estimate" />} />
+                <Route path="/estimates/:id" element={<UnderConstruction title="Estimate Details" />} />
 
                 {/* Projects */}
                 <Route path="/projects" element={<Projects />} />
                 <Route path="/projects/new" element={<ProjectForm />} />
+                <Route path="/projects/:id" element={<UnderConstruction title="Project Details" />} />
 
                 {/* Tasks */}
                 <Route path="/tasks" element={<Tasks />} />
+                <Route path="/tasks/new" element={<UnderConstruction title="New Task" />} />
+                <Route path="/tasks/:id" element={<UnderConstruction title="Task Details" />} />
 
                 {/* Leads */}
                 <Route path="/leads" element={<Leads />} />
+                <Route path="/leads/new" element={<UnderConstruction title="New Lead" />} />
+                <Route path="/leads/:id" element={<UnderConstruction title="Lead Details" />} />
 
                 {/* Proposals */}
                 <Route path="/proposals" element={<Proposals />} />
+                <Route path="/proposals/new" element={<UnderConstruction title="New Proposal" />} />
+                <Route path="/proposals/:id" element={<UnderConstruction title="Proposal Details" />} />
 
                 {/* Contracts */}
                 <Route path="/contracts" element={<Contracts />} />
+                <Route path="/contracts/new" element={<UnderConstruction title="New Contract" />} />
+                <Route path="/contracts/:id" element={<UnderConstruction title="Contract Details" />} />
 
                 {/* Expenses */}
                 <Route path="/expenses" element={<Expenses />} />
+                <Route path="/expenses/new" element={<UnderConstruction title="New Expense" />} />
+                <Route path="/expenses/:id" element={<UnderConstruction title="Expense Details" />} />
 
                 {/* Payments */}
                 <Route path="/payments" element={<Payments />} />
+                <Route path="/payments/new" element={<UnderConstruction title="New Payment" />} />
+                <Route path="/payments/:id" element={<UnderConstruction title="Payment Details" />} />
 
                 {/* Tickets */}
                 <Route path="/tickets" element={<Tickets />} />
                 <Route path="/tickets/new" element={<TicketForm />} />
+                <Route path="/tickets/:id" element={<UnderConstruction title="Ticket Details" />} />
 
                 {/* Reports */}
                 <Route path="/reports" element={<Reports />} />
