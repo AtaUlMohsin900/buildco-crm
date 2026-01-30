@@ -63,11 +63,11 @@ const ProjectForm = () => {
                 action={null}
             />
 
-            <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+            <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 dark:bg-gray-800 dark:border-gray-700">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Project Name */}
                     <div className="md:col-span-2">
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                        <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">
                             Project Name <span className="text-red-500">*</span>
                         </label>
                         <input
@@ -83,7 +83,7 @@ const ProjectForm = () => {
 
                     {/* Client */}
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                        <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">
                             Client <span className="text-red-500">*</span>
                         </label>
                         <input
@@ -99,11 +99,11 @@ const ProjectForm = () => {
 
                     {/* Budget */}
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                        <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">
                             Budget
                         </label>
                         <div className="relative">
-                            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+                            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400">$</span>
                             <input
                                 type="number"
                                 name="budget"
@@ -117,7 +117,7 @@ const ProjectForm = () => {
 
                     {/* Start Date */}
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                        <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">
                             Start Date <span className="text-red-500">*</span>
                         </label>
                         <input
@@ -132,7 +132,7 @@ const ProjectForm = () => {
 
                     {/* Deadline */}
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                        <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">
                             Deadline <span className="text-red-500">*</span>
                         </label>
                         <input
@@ -147,7 +147,7 @@ const ProjectForm = () => {
 
                     {/* Status */}
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                        <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">
                             Status
                         </label>
                         <select
@@ -166,7 +166,7 @@ const ProjectForm = () => {
 
                     {/* Progress */}
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                        <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">
                             Progress (%)
                         </label>
                         <input
@@ -182,7 +182,7 @@ const ProjectForm = () => {
 
                     {/* Description */}
                     <div className="md:col-span-2">
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                        <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">
                             Description
                         </label>
                         <textarea
