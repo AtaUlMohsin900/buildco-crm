@@ -84,7 +84,7 @@ const Header = ({ toggleSidebar }) => {
                     <input
                         type="text"
                         placeholder="Search clients, invoices, projects..."
-                        className="bg-transparent border-none outline-none w-full text-sm text-gray-700 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-500"
+                        className="bg-transparent border-none outline-none w-full text-sm text-gray-700 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400"
                     />
                 </div>
             </div>
@@ -219,7 +219,7 @@ const Header = ({ toggleSidebar }) => {
                             <div className="border-t border-gray-100 my-1 dark:border-gray-700"></div>
                             <button
                                 onClick={handleLogout}
-                                className="w-full text-left block px-4 py-2 text-sm text-danger-600 hover:bg-gray-50 font-medium dark:hover:bg-gray-700"
+                                className="w-full text-left block px-4 py-2 text-sm text-danger-600 hover:bg-gray-50 font-medium dark:hover:bg-gray-700 dark:text-danger-400"
                             >
                                 Logout
                             </button>

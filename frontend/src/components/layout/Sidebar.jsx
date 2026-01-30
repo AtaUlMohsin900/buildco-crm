@@ -85,9 +85,13 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
                     isOpen ? "justify-between" : "justify-center"
                 )}>
                     {isOpen ? (
-                        <img src={isDark ? logoDark : logo} alt="Buildco CRM" className="h-12 w-auto object-contain" />
+                        <img
+                            src={isDark ? logoDark : logo}
+                            alt="Buildco CRM"
+                            className={`h-12 w-auto object-contain ${isDark ? 'brightness-0 invert' : ''}`}
+                        />
                     ) : (
-                        <div className="text-2xl font-bold text-primary-600">B</div>
+                        <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">B</div>
                     )}
 
                     <button
