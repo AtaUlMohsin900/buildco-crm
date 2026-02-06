@@ -23,6 +23,7 @@ import Proposals from './pages/proposals/Proposals'
 import Contracts from './pages/contracts/Contracts'
 import Expenses from './pages/expenses/Expenses'
 import Payments from './pages/payments/Payments'
+import PaymentForm from './pages/payments/PaymentForm'
 import Tickets from './pages/tickets/Tickets'
 import TicketForm from './pages/tickets/TicketForm'
 import Reports from './pages/reports/Reports'
@@ -114,7 +115,7 @@ function App() {
 
                 {/* Payments */}
                 <Route path="/payments" element={<Payments />} />
-                <Route path="/payments/new" element={<UnderConstruction title="New Payment" />} />
+                <Route path="/payments/new" element={<PaymentForm />} />
                 <Route path="/payments/:id" element={<UnderConstruction title="Payment Details" />} />
 
                 {/* Tickets */}
