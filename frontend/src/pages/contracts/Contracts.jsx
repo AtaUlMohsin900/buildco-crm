@@ -50,7 +50,7 @@ const Contracts = () => {
                     <Link to={`/contracts/${info.row.original.id}`} className="p-1 text-gray-500 hover:text-primary-600 transition-colors" title="View Details">
                         <FiEye size={18} />
                     </Link>
-                    <Link to={`/contracts/${info.row.original.id}`} className="p-1 text-gray-500 hover:text-primary-600 transition-colors">
+                    <Link to={`/contracts/edit/${info.row.original.id}`} className="p-1 text-gray-500 hover:text-primary-600 transition-colors">
                         <FiEdit2 size={18} />
                     </Link>
                     <button className="p-1 text-gray-500 hover:text-gray-900 transition-colors" title="Download PDF">

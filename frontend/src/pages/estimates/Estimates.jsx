@@ -57,9 +57,9 @@ const Estimates = () => {
                     <Link to={`/estimates/${info.row.original.id}`} className="p-1 text-gray-500 hover:text-primary-600 transition-colors">
                         <FiEye size={18} />
                     </Link>
-                    <button className="p-1 text-gray-500 hover:text-primary-600 transition-colors">
+                    <Link to={`/estimates/edit/${info.row.original.id}`} className="p-1 text-gray-500 hover:text-primary-600 transition-colors">
                         <FiEdit2 size={18} />
-                    </button>
+                    </Link>
                     <button className="p-1 text-gray-500 hover:text-gray-900 transition-colors" title="Download PDF">
                         <FiDownload size={18} />
                     </button>

@@ -52,7 +52,7 @@ const Leads = () => {
                     <button className="p-1 text-gray-500 hover:text-success-600 transition-colors" title="Convert to Client">
                         <FiUserCheck size={18} />
                     </button>
-                    <Link to={`/leads/${info.row.original.id}`} className="p-1 text-gray-500 hover:text-primary-600 transition-colors">
+                    <Link to={`/leads/edit/${info.row.original.id}`} className="p-1 text-gray-500 hover:text-primary-600 transition-colors">
                         <FiEdit2 size={18} />
                     </Link>
                     <button

@@ -41,10 +41,10 @@ const Reports = () => {
                 title="Reports"
                 parent="Dashboard"
                 action={
-                    <button className="btn-primary flex items-center space-x-2">
+                    <Link to="/reports/new" className="btn-primary flex items-center space-x-2">
                         <FiFileText />
                         <span>Generate Report</span>
-                    </button>
+                    </Link>
                 }
             />
             <DataTable data={data} columns={columns} />

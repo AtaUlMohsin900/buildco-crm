@@ -27,14 +27,27 @@ import PaymentForm from './pages/payments/PaymentForm'
 import Tickets from './pages/tickets/Tickets'
 import TicketForm from './pages/tickets/TicketForm'
 import Reports from './pages/reports/Reports'
+import ReportForm from './pages/reports/ReportForm'
 import Resources from './pages/resources/Resources'
+import ResourceForm from './pages/resources/ResourceForm'
 import Suppliers from './pages/suppliers/Suppliers'
+import SupplierForm from './pages/suppliers/SupplierForm'
 import Subcontractors from './pages/subcontractors/Subcontractors'
+import SubcontractorForm from './pages/subcontractors/SubcontractorForm'
 import Employees from './pages/employees/Employees'
 import EmployeeForm from './pages/employees/EmployeeForm'
 import Safety from './pages/safety/Safety'
+import SafetyForm from './pages/safety/SafetyForm'
 import TimeTracking from './pages/time-tracking/TimeTracking'
+import TimeEntryForm from './pages/time-tracking/TimeEntryForm'
 import CostManagement from './pages/cost-management/CostManagement'
+import CostForm from './pages/cost-management/CostForm'
+import EstimateForm from './pages/estimates/EstimateForm'
+import TaskForm from './pages/tasks/TaskForm'
+import LeadForm from './pages/leads/LeadForm'
+import ProposalForm from './pages/proposals/ProposalForm'
+import ContractForm from './pages/contracts/ContractForm'
+import ExpenseForm from './pages/expenses/ExpenseForm'
 import Settings from './pages/settings/Settings'
 import UnderConstruction from './pages/UnderConstruction'
 import NotFound from './pages/NotFound'
@@ -92,27 +105,32 @@ function App() {
 
                 {/* Tasks */}
                 <Route path="/tasks" element={<Tasks />} />
-                <Route path="/tasks/new" element={<UnderConstruction title="New Task" />} />
+                <Route path="/tasks/new" element={<TaskForm />} />
+                <Route path="/tasks/edit/:id" element={<TaskForm />} />
                 <Route path="/tasks/:id" element={<UnderConstruction title="Task Details" />} />
 
                 {/* Leads */}
                 <Route path="/leads" element={<Leads />} />
-                <Route path="/leads/new" element={<UnderConstruction title="New Lead" />} />
+                <Route path="/leads/new" element={<LeadForm />} />
+                <Route path="/leads/edit/:id" element={<LeadForm />} />
                 <Route path="/leads/:id" element={<UnderConstruction title="Lead Details" />} />
 
                 {/* Proposals */}
                 <Route path="/proposals" element={<Proposals />} />
-                <Route path="/proposals/new" element={<UnderConstruction title="New Proposal" />} />
+                <Route path="/proposals/new" element={<ProposalForm />} />
+                <Route path="/proposals/edit/:id" element={<ProposalForm />} />
                 <Route path="/proposals/:id" element={<UnderConstruction title="Proposal Details" />} />
 
                 {/* Contracts */}
                 <Route path="/contracts" element={<Contracts />} />
-                <Route path="/contracts/new" element={<UnderConstruction title="New Contract" />} />
+                <Route path="/contracts/new" element={<ContractForm />} />
+                <Route path="/contracts/edit/:id" element={<ContractForm />} />
                 <Route path="/contracts/:id" element={<UnderConstruction title="Contract Details" />} />
 
                 {/* Expenses */}
                 <Route path="/expenses" element={<Expenses />} />
-                <Route path="/expenses/new" element={<UnderConstruction title="New Expense" />} />
+                <Route path="/expenses/new" element={<ExpenseForm />} />
+                <Route path="/expenses/edit/:id" element={<ExpenseForm />} />
                 <Route path="/expenses/:id" element={<UnderConstruction title="Expense Details" />} />
 
                 {/* Payments */}
@@ -128,20 +146,24 @@ function App() {
 
                 {/* Reports */}
                 <Route path="/reports" element={<Reports />} />
+                <Route path="/reports/new" element={<ReportForm />} />
 
                 {/* Resources */}
                 <Route path="/resources" element={<Resources />} />
-                <Route path="/resources/new" element={<UnderConstruction title="New Resource" />} />
+                <Route path="/resources/new" element={<ResourceForm />} />
+                <Route path="/resources/edit/:id" element={<ResourceForm />} />
                 <Route path="/resources/:id" element={<UnderConstruction title="Resource Details" />} />
 
                 {/* Suppliers */}
                 <Route path="/suppliers" element={<Suppliers />} />
-                <Route path="/suppliers/new" element={<UnderConstruction title="New Supplier" />} />
+                <Route path="/suppliers/new" element={<SupplierForm />} />
+                <Route path="/suppliers/edit/:id" element={<SupplierForm />} />
                 <Route path="/suppliers/:id" element={<UnderConstruction title="Supplier Details" />} />
 
                 {/* Subcontractors */}
                 <Route path="/subcontractors" element={<Subcontractors />} />
-                <Route path="/subcontractors/new" element={<UnderConstruction title="New Subcontractor" />} />
+                <Route path="/subcontractors/new" element={<SubcontractorForm />} />
+                <Route path="/subcontractors/edit/:id" element={<SubcontractorForm />} />
                 <Route path="/subcontractors/:id" element={<UnderConstruction title="Subcontractor Details" />} />
 
                 {/* Employees */}
@@ -152,16 +174,19 @@ function App() {
 
                 {/* Safety */}
                 <Route path="/safety" element={<Safety />} />
-                <Route path="/safety/new" element={<UnderConstruction title="New Safety Record" />} />
+                <Route path="/safety/new" element={<SafetyForm />} />
+                <Route path="/safety/edit/:id" element={<SafetyForm />} />
                 <Route path="/safety/:id" element={<UnderConstruction title="Safety Record Details" />} />
 
                 {/* Time Tracking */}
                 <Route path="/time-tracking" element={<TimeTracking />} />
-                <Route path="/time-tracking/new" element={<UnderConstruction title="Log Time" />} />
+                <Route path="/time-tracking/new" element={<TimeEntryForm />} />
+                <Route path="/time-tracking/edit/:id" element={<TimeEntryForm />} />
 
                 {/* Cost Management */}
                 <Route path="/cost-management" element={<CostManagement />} />
-                <Route path="/cost-management/new" element={<UnderConstruction title="New Cost Entry" />} />
+                <Route path="/cost-management/new" element={<CostForm />} />
+                <Route path="/cost-management/edit/:id" element={<CostForm />} />
 
                 {/* Settings */}
                 <Route path="/settings" element={<Settings />} />

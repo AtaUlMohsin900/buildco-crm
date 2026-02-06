@@ -47,12 +47,12 @@ const Suppliers = () => {
             header: 'Actions',
             cell: (info) => (
                 <div className="flex items-center space-x-2">
-                    <button className="p-1 text-gray-500 hover:text-primary-600 transition-colors">
+                    <Link to={`/suppliers/${info.row.original.id}`} className="p-1 text-gray-500 hover:text-primary-600 transition-colors">
                         <FiEye size={18} />
-                    </button>
-                    <button className="p-1 text-gray-500 hover:text-primary-600 transition-colors">
+                    </Link>
+                    <Link to={`/suppliers/edit/${info.row.original.id}`} className="p-1 text-gray-500 hover:text-primary-600 transition-colors">
                         <FiEdit2 size={18} />
-                    </button>
+                    </Link>
                     <button
                         onClick={() => {
                             if (window.confirm('Are you sure you want to delete this supplier?')) {
@@ -74,10 +74,10 @@ const Suppliers = () => {
                 title="Suppliers"
                 parent="Dashboard"
                 action={
-                    <button className="btn-primary flex items-center space-x-2">
+                    <Link to="/suppliers/new" className="btn-primary flex items-center space-x-2">
                         <FiPlus />
                         <span>New Supplier</span>
-                    </button>
+                    </Link>
                 }
             />
 

@@ -40,7 +40,7 @@ const Expenses = () => {
                     <Link to={`/expenses/${info.row.original.id}`} className="p-1 text-gray-500 hover:text-primary-600 transition-colors" title="View Receipt">
                         <FiFileText size={18} />
                     </Link>
-                    <Link to={`/expenses/${info.row.original.id}`} className="p-1 text-gray-500 hover:text-primary-600 transition-colors">
+                    <Link to={`/expenses/edit/${info.row.original.id}`} className="p-1 text-gray-500 hover:text-primary-600 transition-colors">
                         <FiEdit2 size={18} />
                     </Link>
                     <button

@@ -50,9 +50,9 @@ const TimeTracking = () => {
             header: 'Actions',
             cell: (info) => (
                 <div className="flex items-center space-x-2">
-                    <button className="p-1 text-gray-500 hover:text-primary-600 transition-colors">
+                    <Link to={`/time-tracking/edit/${info.row.original.id}`} className="p-1 text-gray-500 hover:text-primary-600 transition-colors">
                         <FiEdit2 size={18} />
-                    </button>
+                    </Link>
                     <button
                         onClick={() => {
                             if (window.confirm('Are you sure you want to delete this entry?')) {
@@ -74,10 +74,10 @@ const TimeTracking = () => {
                 title="Time Tracking"
                 parent="Dashboard"
                 action={
-                    <button className="btn-primary flex items-center space-x-2">
+                    <Link to="/time-tracking/new" className="btn-primary flex items-center space-x-2">
                         <FiPlus />
                         <span>Log Time</span>
-                    </button>
+                    </Link>
                 }
             />
 
