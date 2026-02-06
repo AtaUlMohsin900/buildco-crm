@@ -173,7 +173,14 @@ export const useAppStore = create(
                 { id: 1, name: 'Esther Howard', role: 'Project Manager', department: 'Management', email: 'esther@buildco.com', phone: '+1 555-0301', status: 'Active' },
                 { id: 2, name: 'Cody Fisher', role: 'Site Engineer', department: 'Engineering', email: 'cody@buildco.com', phone: '+1 555-0302', status: 'Active' },
             ],
-            addEmployee: (item) => set((state) => ({ employees: [...state.employees, { ...item, id: state.employees.length + 1 }] })),
+            addEmployee: (item) => set((state) => {
+                const newEmployee = { ...item, id: state.employees.length + 1 };
+                syncToSheets('employees', newEmployee);
+                return { employees: [...state.employees, newEmployee] };
+            }),
+            updateEmployee: (id, data) => set((state) => ({
+                employees: state.employees.map((e) => e.id === id ? { ...e, ...data } : e)
+            })),
             deleteEmployee: (id) => set((state) => ({ employees: state.employees.filter((i) => i.id !== id) })),
 
             // --- SAFETY ---

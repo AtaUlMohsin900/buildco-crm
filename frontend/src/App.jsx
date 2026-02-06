@@ -31,6 +31,7 @@ import Resources from './pages/resources/Resources'
 import Suppliers from './pages/suppliers/Suppliers'
 import Subcontractors from './pages/subcontractors/Subcontractors'
 import Employees from './pages/employees/Employees'
+import EmployeeForm from './pages/employees/EmployeeForm'
 import Safety from './pages/safety/Safety'
 import TimeTracking from './pages/time-tracking/TimeTracking'
 import CostManagement from './pages/cost-management/CostManagement'
@@ -145,7 +146,8 @@ function App() {
 
                 {/* Employees */}
                 <Route path="/employees" element={<Employees />} />
-                <Route path="/employees/new" element={<UnderConstruction title="New Employee" />} />
+                <Route path="/employees/new" element={<EmployeeForm />} />
+                <Route path="/employees/edit/:id" element={<EmployeeForm />} />
                 <Route path="/employees/:id" element={<UnderConstruction title="Employee Details" />} />
 
                 {/* Safety */}
