@@ -32,13 +32,13 @@ import { useClientStore } from '../../store/clientStore'
 
 const Dashboard = () => {
     // Data from stores
-    const { invoices } = useAppStore()
+    const { invoices, payments } = useAppStore()
     const { clients } = useClientStore()
 
     // Calculate dynamic stats
-    const totalRevenue = invoices
-        .filter(inv => inv.status === 'Paid')
-        .reduce((sum, inv) => sum + (parseFloat(inv.amount) || 0), 0)
+    // Use ACTUAL PAYMENTS for revenue, not just invoice totals
+    const totalRevenue = payments
+        .reduce((sum, p) => sum + (parseFloat(p.amount) || 0), 0)
 
     const totalInvoices = invoices.length
 
@@ -87,17 +87,13 @@ const Dashboard = () => {
 
     // Calculate Chart Data
 
-    // 1. Revenue Over Time (Line Chart)
+    // 1. Revenue Over Time (Line Chart) - Based on PAYMENTS
     const monthlyRevenue = new Array(12).fill(0)
-    invoices.forEach(inv => {
-        if (inv.status === 'Paid') {
-            const date = new Date(inv.date)
-            // Ensure we only count for current year or handle correctly
-            // For simplicity, we just map month index 0-11
-            const monthIndex = date.getMonth()
-            if (monthIndex >= 0 && monthIndex < 12) {
-                monthlyRevenue[monthIndex] += (parseFloat(inv.amount) || 0)
-            }
+    payments.forEach(pay => {
+        const date = new Date(pay.date)
+        const monthIndex = date.getMonth()
+        if (monthIndex >= 0 && monthIndex < 12) {
+            monthlyRevenue[monthIndex] += (parseFloat(pay.amount) || 0)
         }
     })
 

@@ -69,7 +69,20 @@ export const useAppStore = create((set) => ({
     payments: [
         { id: 'PAY-5001', invoice: 'INV-1001', mode: 'Bank Transfer', date: '2026-01-16', amount: 1250.00, txid: 'TXN123456' },
     ],
-    addPayment: (item) => set((state) => ({ payments: [...state.payments, { ...item, id: `PAY-${Date.now()}` }] })),
+    addPayment: (item) => set((state) => {
+        // Add the payment
+        const newPayments = [...state.payments, { ...item, id: `PAY-${Date.now()}` }];
+        
+        // Find and update the invoice status to 'Paid'
+        const newInvoices = state.invoices.map(inv => 
+            inv.id === item.invoice ? { ...inv, status: 'Paid' } : inv
+        );
+
+        return { 
+            payments: newPayments, 
+            invoices: newInvoices 
+        };
+    }),
     deletePayment: (id) => set((state) => ({ payments: state.payments.filter((i) => i.id !== id) })),
 
     // --- TICKETS ---
