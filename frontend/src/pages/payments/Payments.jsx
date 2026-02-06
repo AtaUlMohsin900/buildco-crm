@@ -12,7 +12,7 @@ const Payments = () => {
     const columns = [
         columnHelper.accessor('id', {
             header: 'Payment #',
-            cell: (info) => <span className="font-medium text-gray-900">{info.getValue()}</span>
+            cell: (info) => <span className="font-medium text-gray-900 dark:text-gray-100">{info.getValue()}</span>
         }),
         columnHelper.accessor('invoice', {
             header: 'Invoice #',

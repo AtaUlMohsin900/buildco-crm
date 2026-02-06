@@ -15,6 +15,13 @@ import {
     FiBarChart2,
     FiSettings,
     FiX,
+    FiBox,
+    FiTruck,
+    FiTool,
+    FiBriefcase,
+    FiShield,
+    FiClock,
+    FiPieChart,
 } from 'react-icons/fi'
 import clsx from 'clsx'
 import logo from '../../assets/logo.png'
@@ -24,9 +31,16 @@ import { useThemeStore } from '../../store/themeStore'
 const menuItems = [
     { name: 'Dashboard', path: '/dashboard', icon: FiHome },
     { name: 'Clients', path: '/clients', icon: FiUsers },
+    { name: 'Projects', path: '/projects', icon: FiFolder },
     { name: 'Invoices', path: '/invoices', icon: FiFileText },
     { name: 'Estimates', path: '/estimates', icon: FiDollarSign },
-    { name: 'Projects', path: '/projects', icon: FiFolder },
+    { name: 'Resources', path: '/resources', icon: FiBox },
+    { name: 'Suppliers', path: '/suppliers', icon: FiTruck },
+    { name: 'Subcontractors', path: '/subcontractors', icon: FiTool },
+    { name: 'Employees', path: '/employees', icon: FiBriefcase },
+    { name: 'Safety', path: '/safety', icon: FiShield },
+    { name: 'Time Tracking', path: '/time-tracking', icon: FiClock },
+    { name: 'Cost Management', path: '/cost-management', icon: FiPieChart },
     { name: 'Tasks', path: '/tasks', icon: FiCheckSquare },
     { name: 'Leads', path: '/leads', icon: FiUserPlus },
     { name: 'Proposals', path: '/proposals', icon: FiFile },

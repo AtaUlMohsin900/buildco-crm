@@ -12,7 +12,7 @@ const Contracts = () => {
     const columns = [
         columnHelper.accessor('id', {
             header: 'Contract ID',
-            cell: (info) => <span className="font-medium text-gray-900">{info.getValue()}</span>
+            cell: (info) => <span className="font-medium text-gray-900 dark:text-gray-100">{info.getValue()}</span>
         }),
         columnHelper.accessor('subject', {
             header: 'Subject',
@@ -22,7 +22,7 @@ const Contracts = () => {
         }),
         columnHelper.accessor('amount', {
             header: 'Value',
-            cell: (info) => <span className="font-semibold text-gray-900">Rs. {info.getValue().toFixed(2)}</span>
+            cell: (info) => <span className="font-semibold text-gray-900 dark:text-gray-100">Rs. {info.getValue().toFixed(2)}</span>
         }),
         columnHelper.accessor('start_date', {
             header: 'Start Date',

@@ -12,7 +12,7 @@ const Expenses = () => {
     const columns = [
         columnHelper.accessor('category', {
             header: 'Category',
-            cell: (info) => <span className="font-medium text-gray-900">{info.getValue()}</span>
+            cell: (info) => <span className="font-medium text-gray-900 dark:text-gray-100">{info.getValue()}</span>
         }),
         columnHelper.accessor('name', {
             header: 'Name',
@@ -22,7 +22,7 @@ const Expenses = () => {
         }),
         columnHelper.accessor('amount', {
             header: 'Amount',
-            cell: (info) => <span className="font-semibold text-gray-900">Rs. {info.getValue().toFixed(2)}</span>
+            cell: (info) => <span className="font-semibold text-gray-900 dark:text-gray-100">Rs. {info.getValue().toFixed(2)}</span>
         }),
         columnHelper.accessor('billable', {
             header: 'Billable',

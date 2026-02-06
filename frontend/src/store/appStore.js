@@ -85,4 +85,61 @@ export const useAppStore = create((set) => ({
     reports: [
         { id: 1, name: 'Sales Report Jan', type: 'Sales', date: '2026-02-01' },
     ],
+
+    // --- RESOURCES ---
+    resources: [
+        { id: 1, name: 'Cement Bags', type: 'Material', quantity: 500, unit: 'Bags', cost: 550.00, status: 'In Stock' },
+        { id: 2, name: 'Excavator 3000', type: 'Equipment', quantity: 2, unit: 'Units', cost: 15000.00, status: 'Active' },
+        { id: 3, name: 'Steel Rods', type: 'Material', quantity: 1000, unit: 'Kg', cost: 75.00, status: 'Low Stock' },
+    ],
+    addResource: (item) => set((state) => ({ resources: [...state.resources, { ...item, id: state.resources.length + 1 }] })),
+    deleteResource: (id) => set((state) => ({ resources: state.resources.filter((i) => i.id !== id) })),
+
+    // --- SUPPLIERS ---
+    suppliers: [
+        { id: 1, name: 'BuildMate Supplies', contact_person: 'Robert Fox', email: 'robert@buildmate.com', phone: '+1 555-0101', category: 'General', status: 'Active' },
+        { id: 2, name: 'Concrete Kings', contact_person: 'Sam Wilson', email: 'sam@concretekings.com', phone: '+1 555-0102', category: 'Concrete', status: 'Active' },
+    ],
+    addSupplier: (item) => set((state) => ({ suppliers: [...state.suppliers, { ...item, id: state.suppliers.length + 1 }] })),
+    deleteSupplier: (id) => set((state) => ({ suppliers: state.suppliers.filter((i) => i.id !== id) })),
+
+    // --- SUBCONTRACTORS ---
+    subcontractors: [
+        { id: 1, company_name: 'Sparky Electric', contact_person: 'Electro Max', trade: 'Electrical', phone: '+1 555-0201', email: 'max@sparky.com', status: 'Active', rating: 4.8 },
+        { id: 2, company_name: 'Flow Plumbers', contact_person: 'Mario Luigi', trade: 'Plumbing', phone: '+1 555-0202', email: 'mario@flow.com', status: 'Active', rating: 4.5 },
+    ],
+    addSubcontractor: (item) => set((state) => ({ subcontractors: [...state.subcontractors, { ...item, id: state.subcontractors.length + 1 }] })),
+    deleteSubcontractor: (id) => set((state) => ({ subcontractors: state.subcontractors.filter((i) => i.id !== id) })),
+
+    // --- EMPLOYEES ---
+    employees: [
+        { id: 1, name: 'Esther Howard', role: 'Project Manager', department: 'Management', email: 'esther@buildco.com', phone: '+1 555-0301', status: 'Active' },
+        { id: 2, name: 'Cody Fisher', role: 'Site Engineer', department: 'Engineering', email: 'cody@buildco.com', phone: '+1 555-0302', status: 'Active' },
+    ],
+    addEmployee: (item) => set((state) => ({ employees: [...state.employees, { ...item, id: state.employees.length + 1 }] })),
+    deleteEmployee: (id) => set((state) => ({ employees: state.employees.filter((i) => i.id !== id) })),
+
+    // --- SAFETY ---
+    safety: [
+        { id: 1, type: 'Inspection', date: '2026-02-01', description: 'Weekly Site Safety Walk', reported_by: 'Safety Officer', status: 'Passed', location: 'Site A' },
+        { id: 2, type: 'Near Miss', date: '2026-01-28', description: 'Loose scaffolding near entrance', reported_by: 'John Doe', status: 'Resolved', location: 'Site B' },
+    ],
+    addSafetyRecord: (item) => set((state) => ({ safety: [...state.safety, { ...item, id: state.safety.length + 1 }] })),
+    deleteSafetyRecord: (id) => set((state) => ({ safety: state.safety.filter((i) => i.id !== id) })),
+
+    // --- TIME TRACKING ---
+    timeEntries: [
+        { id: 1, employee: 'Cody Fisher', project: 'Web Redesign', date: '2026-02-05', hours: 8, description: 'Frontend development', status: 'Approved' },
+        { id: 2, employee: 'Esther Howard', project: 'Mobile App', date: '2026-02-05', hours: 4, description: 'Client meeting', status: 'Pending' },
+    ],
+    addTimeEntry: (item) => set((state) => ({ timeEntries: [...state.timeEntries, { ...item, id: state.timeEntries.length + 1 }] })),
+    deleteTimeEntry: (id) => set((state) => ({ timeEntries: state.timeEntries.filter((i) => i.id !== id) })),
+
+    // --- COST MANAGEMENT ---
+    costs: [
+        { id: 1, project: 'Web Redesign', cost_code: '01-General', budget: 50000, actual: 12000, variance: 38000, status: 'On Track' },
+        { id: 2, project: 'Mobile App', cost_code: '02-Development', budget: 80000, actual: 5000, variance: 75000, status: 'On Track' },
+    ],
+    addCost: (item) => set((state) => ({ costs: [...state.costs, { ...item, id: state.costs.length + 1 }] })),
+    deleteCost: (id) => set((state) => ({ costs: state.costs.filter((i) => i.id !== id) })),
 }))

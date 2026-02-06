@@ -13,8 +13,8 @@ const Proposals = () => {
         columnHelper.accessor('id', {
             header: 'Proposal #',
             cell: (info) => (
-                <div className="font-medium text-gray-900">
-                    <Link to={`/proposals/${info.getValue()}`} className="hover:text-primary-600">
+                <div className="font-medium text-gray-900 dark:text-gray-100">
+                    <Link to={`/proposals/${info.getValue()}`} className="hover:text-primary-600 dark:hover:text-primary-400">
                         {info.getValue()}
                     </Link>
                 </div>
@@ -25,7 +25,7 @@ const Proposals = () => {
         }),
         columnHelper.accessor('subject', {
             header: 'Subject',
-            cell: (info) => <span className="font-medium text-gray-900">{info.getValue()}</span>
+            cell: (info) => <span className="font-medium text-gray-900 dark:text-gray-100">{info.getValue()}</span>
         }),
         columnHelper.accessor('date', {
             header: 'Date',

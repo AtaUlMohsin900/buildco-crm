@@ -26,6 +26,13 @@ import Payments from './pages/payments/Payments'
 import Tickets from './pages/tickets/Tickets'
 import TicketForm from './pages/tickets/TicketForm'
 import Reports from './pages/reports/Reports'
+import Resources from './pages/resources/Resources'
+import Suppliers from './pages/suppliers/Suppliers'
+import Subcontractors from './pages/subcontractors/Subcontractors'
+import Employees from './pages/employees/Employees'
+import Safety from './pages/safety/Safety'
+import TimeTracking from './pages/time-tracking/TimeTracking'
+import CostManagement from './pages/cost-management/CostManagement'
 import Settings from './pages/settings/Settings'
 import UnderConstruction from './pages/UnderConstruction'
 import NotFound from './pages/NotFound'
@@ -117,6 +124,39 @@ function App() {
 
                 {/* Reports */}
                 <Route path="/reports" element={<Reports />} />
+
+                {/* Resources */}
+                <Route path="/resources" element={<Resources />} />
+                <Route path="/resources/new" element={<UnderConstruction title="New Resource" />} />
+                <Route path="/resources/:id" element={<UnderConstruction title="Resource Details" />} />
+
+                {/* Suppliers */}
+                <Route path="/suppliers" element={<Suppliers />} />
+                <Route path="/suppliers/new" element={<UnderConstruction title="New Supplier" />} />
+                <Route path="/suppliers/:id" element={<UnderConstruction title="Supplier Details" />} />
+
+                {/* Subcontractors */}
+                <Route path="/subcontractors" element={<Subcontractors />} />
+                <Route path="/subcontractors/new" element={<UnderConstruction title="New Subcontractor" />} />
+                <Route path="/subcontractors/:id" element={<UnderConstruction title="Subcontractor Details" />} />
+
+                {/* Employees */}
+                <Route path="/employees" element={<Employees />} />
+                <Route path="/employees/new" element={<UnderConstruction title="New Employee" />} />
+                <Route path="/employees/:id" element={<UnderConstruction title="Employee Details" />} />
+
+                {/* Safety */}
+                <Route path="/safety" element={<Safety />} />
+                <Route path="/safety/new" element={<UnderConstruction title="New Safety Record" />} />
+                <Route path="/safety/:id" element={<UnderConstruction title="Safety Record Details" />} />
+
+                {/* Time Tracking */}
+                <Route path="/time-tracking" element={<TimeTracking />} />
+                <Route path="/time-tracking/new" element={<UnderConstruction title="Log Time" />} />
+
+                {/* Cost Management */}
+                <Route path="/cost-management" element={<CostManagement />} />
+                <Route path="/cost-management/new" element={<UnderConstruction title="New Cost Entry" />} />
 
                 {/* Settings */}
                 <Route path="/settings" element={<Settings />} />
