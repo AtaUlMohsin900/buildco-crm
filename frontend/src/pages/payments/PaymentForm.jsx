@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { FiSave, FiX } from 'react-icons/fi'
 import { toast } from 'react-toastify'
 import PageHeader from '../../components/common/PageHeader'
@@ -7,11 +7,13 @@ import { useAppStore } from '../../store/appStore'
 
 const PaymentForm = () => {
     const navigate = useNavigate()
-    const { addPayment, invoices } = useAppStore()
+    const { id } = useParams()
+    const isEditMode = !!id
+
+    const { addPayment, updatePayment, invoices, payments } = useAppStore()
     const [loading, setLoading] = useState(false)
     
-    // Show all invoices (sorted by newest first conceptually, or just list them)
-    // We reverse to show newest invoices at top if the array is chronological
+    // Show all invoices (reversed for newest first)
     const dueInvoices = [...invoices].reverse()
 
     const [formData, setFormData] = useState({
@@ -23,25 +25,44 @@ const PaymentForm = () => {
         notes: ''
     })
 
-    // Auto-fill amount when invoice is selected
+    // Load existing payment data if in edit mode
     useEffect(() => {
-        if (formData.invoice) {
-            const selectedInvoice = invoices.find(inv => inv.id === formData.invoice)
-            if (selectedInvoice) {
-                setFormData(prev => ({
-                    ...prev,
-                    amount: selectedInvoice.amount
-                }))
+        if (isEditMode) {
+            const paymentToEdit = payments.find(p => p.id === id)
+            if (paymentToEdit) {
+                setFormData({
+                    invoice: paymentToEdit.invoice || '',
+                    date: paymentToEdit.date || new Date().toISOString().split('T')[0],
+                    amount: paymentToEdit.amount || '',
+                    mode: paymentToEdit.mode || 'Bank Transfer',
+                    txid: paymentToEdit.txid || '',
+                    notes: paymentToEdit.notes || ''
+                })
+            } else {
+                toast.error('Payment record not found')
+                navigate('/payments')
             }
         }
-    }, [formData.invoice, invoices])
+    }, [id, isEditMode, payments, navigate])
 
     const handleChange = (e) => {
         const { name, value } = e.target
-        setFormData((prev) => ({
-            ...prev,
-            [name]: value,
-        }))
+        
+        // Special handling for invoice selection to auto-fill amount
+        if (name === 'invoice') {
+            const selectedInvoice = invoices.find(inv => inv.id === value)
+            setFormData(prev => ({
+                ...prev,
+                invoice: value,
+                // Only auto-fill amount if we found the invoice
+                amount: selectedInvoice ? selectedInvoice.amount : prev.amount
+            }))
+        } else {
+            setFormData((prev) => ({
+                ...prev,
+                [name]: value,
+            }))
+        }
     }
 
     const handleSubmit = async (e) => {
@@ -52,15 +73,22 @@ const PaymentForm = () => {
             // Simulate API call
             await new Promise((resolve) => setTimeout(resolve, 500))
             
-            addPayment({
+            const payload = {
                 ...formData,
                 amount: parseFloat(formData.amount)
-            })
+            }
+
+            if (isEditMode) {
+                updatePayment(id, payload)
+                toast.success('Payment updated successfully')
+            } else {
+                addPayment(payload)
+                toast.success('Payment recorded successfully')
+            }
             
-            toast.success('Payment recorded successfully')
             navigate('/payments')
         } catch (error) {
-            toast.error('Failed to record payment')
+            toast.error(isEditMode ? 'Failed to update payment' : 'Failed to record payment')
         } finally {
             setLoading(false)
         }
@@ -69,7 +97,7 @@ const PaymentForm = () => {
     return (
         <div className="animate-fade-in max-w-4xl mx-auto">
             <PageHeader
-                title="Record Payment"
+                title={isEditMode ? 'Edit Payment' : 'Record Payment'}
                 parent="Payments"
                 action={null}
             />
@@ -88,6 +116,7 @@ const PaymentForm = () => {
                             value={formData.invoice}
                             onChange={handleChange}
                             className="input"
+                            disabled={isEditMode} // Optional: Lock invoice on edit if desired, but nice to allow change
                         >
                             <option value="">-- Select Invoice --</option>
                             {dueInvoices.map(inv => (
@@ -201,7 +230,7 @@ const PaymentForm = () => {
                         disabled={loading}
                     >
                         <FiSave />
-                        <span>{loading ? 'Recording...' : 'Record Payment'}</span>
+                        <span>{loading ? 'Saving...' : (isEditMode ? 'Update Payment' : 'Record Payment')}</span>
                     </button>
                 </div>
             </form>

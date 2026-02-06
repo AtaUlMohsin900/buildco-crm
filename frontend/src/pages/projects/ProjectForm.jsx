@@ -4,9 +4,11 @@ import { FiSave, FiX } from 'react-icons/fi'
 import { toast } from 'react-toastify'
 import PageHeader from '../../components/common/PageHeader'
 import { useAppStore } from '../../store/appStore'
+import { useClientStore } from '../../store/clientStore'
 
 const ProjectForm = () => {
     const navigate = useNavigate()
+    const { clients } = useClientStore()
     const [loading, setLoading] = useState(false)
     const [formData, setFormData] = useState({
         name: '',
@@ -86,15 +88,20 @@ const ProjectForm = () => {
                         <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">
                             Client <span className="text-red-500">*</span>
                         </label>
-                        <input
-                            type="text"
+                        <select
                             name="client"
                             required
                             value={formData.client}
                             onChange={handleChange}
                             className="input"
-                            placeholder="Client Name"
-                        />
+                        >
+                            <option value="">-- Select Client --</option>
+                            {clients.map(client => (
+                                <option key={client.id} value={client.company}>
+                                    {client.company}
+                                </option>
+                            ))}
+                        </select>
                     </div>
 
                     {/* Budget */}

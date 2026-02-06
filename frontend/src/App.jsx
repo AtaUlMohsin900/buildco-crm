@@ -71,6 +71,7 @@ function App() {
                 {/* Clients */}
                 <Route path="/clients" element={<Clients />} />
                 <Route path="/clients/new" element={<ClientForm />} />
+                <Route path="/clients/edit/:id" element={<ClientForm />} />
                 <Route path="/clients/:id" element={<ClientDetails />} />
 
                 {/* Invoices */}
@@ -116,6 +117,7 @@ function App() {
                 {/* Payments */}
                 <Route path="/payments" element={<Payments />} />
                 <Route path="/payments/new" element={<PaymentForm />} />
+                <Route path="/payments/edit/:id" element={<PaymentForm />} />
                 <Route path="/payments/:id" element={<UnderConstruction title="Payment Details" />} />
 
                 {/* Tickets */}

@@ -40,7 +40,7 @@ const Payments = () => {
                     <button className="p-1 text-gray-500 hover:text-primary-600 transition-colors" title="Download Receipt">
                         <FiDownload size={18} />
                     </button>
-                    <Link to={`/payments/${info.row.original.id}`} className="p-1 text-gray-500 hover:text-primary-600 transition-colors">
+                    <Link to={`/payments/edit/${info.row.original.id}`} className="p-1 text-gray-500 hover:text-primary-600 transition-colors">
                         <FiEdit2 size={18} />
                     </Link>
                     <button

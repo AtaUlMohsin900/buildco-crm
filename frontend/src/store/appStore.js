@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
+import { syncToSheets } from '../utils/syncService'
 
 export const useAppStore = create(
     persist(
@@ -16,15 +17,21 @@ export const useAppStore = create(
                 
                 // If invoice is created as 'Paid', automatically add a payment record
                 if (invoice.status === 'Paid') {
+                    const payId = `PAY-${Date.now()}`;
                     newPayments = [...state.payments, {
-                        id: `PAY-${Date.now()}`,
+                        id: payId,
                         invoice: newInvoice.id,
                         mode: 'Other', 
                         date: invoice.date,
                         amount: invoice.amount,
                         txid: 'AUTO-CREATED'
                     }]
+                    // Sync auto-created payment
+                    syncToSheets('payments', newPayments[newPayments.length-1]);
                 }
+
+                // Sync the new invoice
+                syncToSheets('invoices', newInvoice);
 
                 return { 
                     invoices: [...state.invoices, newInvoice],
@@ -109,12 +116,18 @@ export const useAppStore = create(
                     inv.id === item.invoice ? { ...inv, status: 'Paid' } : inv
                 );
 
+                // Sync the manual payment
+                syncToSheets('payments', newPayment);
+
                 return { 
                     payments: newPayments, 
                     invoices: newInvoices 
                 };
             }),
-            deletePayment: (id) => set((state) => ({ payments: state.payments.filter((i) => i.id !== id) })),
+            updatePayment: (id, data) => set((state) => ({
+        payments: state.payments.map((p) => p.id === id ? { ...p, ...data } : p)
+    })),
+    deletePayment: (id) => set((state) => ({ payments: state.payments.filter((i) => i.id !== id) })),
 
             // --- TICKETS ---
             tickets: [

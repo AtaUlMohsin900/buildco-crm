@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import { FiSave, FiX } from 'react-icons/fi'
 import { toast } from 'react-toastify'
 import PageHeader from '../../components/common/PageHeader'
@@ -7,6 +7,9 @@ import { useClientStore } from '../../store/clientStore'
 
 const ClientForm = () => {
     const navigate = useNavigate()
+    const { id } = useParams()
+    const isEditMode = !!id
+    
     const [loading, setLoading] = useState(false)
     const [formData, setFormData] = useState({
         company: '',
@@ -17,7 +20,26 @@ const ClientForm = () => {
         status: 'Active',
     })
 
-    const addClient = useClientStore((state) => state.addClient)
+    const { addClient, updateClient, clients } = useClientStore()
+
+    useEffect(() => {
+        if (isEditMode) {
+            const clientToEdit = clients.find(c => c.id === parseInt(id))
+            if (clientToEdit) {
+                setFormData({
+                    company: clientToEdit.company || '',
+                    contact: clientToEdit.contact || '',
+                    email: clientToEdit.email || '',
+                    phone: clientToEdit.phone || '',
+                    address: clientToEdit.address || '',
+                    status: clientToEdit.status || 'Active',
+                })
+            } else {
+                toast.error('Client not found')
+                navigate('/clients')
+            }
+        }
+    }, [id, isEditMode, clients, navigate])
 
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -31,14 +53,20 @@ const ClientForm = () => {
         e.preventDefault()
         setLoading(true)
 
-        // Add to store
         try {
             await new Promise((resolve) => setTimeout(resolve, 500)) // Small delay for UX
-            addClient(formData)
-            toast.success('Client created successfully')
+            
+            if (isEditMode) {
+                updateClient(parseInt(id), formData)
+                toast.success('Client updated successfully')
+            } else {
+                addClient(formData)
+                toast.success('Client created successfully')
+            }
+            
             navigate('/clients')
         } catch (error) {
-            toast.error('Failed to create client')
+            toast.error(isEditMode ? 'Failed to update client' : 'Failed to create client')
         } finally {
             setLoading(false)
         }
@@ -47,16 +75,16 @@ const ClientForm = () => {
     return (
         <div className="animate-fade-in max-w-4xl mx-auto">
             <PageHeader
-                title="New Client"
+                title={isEditMode ? 'Edit Client' : 'New Client'}
                 parent="Clients"
                 action={null}
             />
 
-            <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+            <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 dark:bg-gray-800 dark:border-gray-700">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Company */}
                     <div className="md:col-span-2">
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                             Company Name <span className="text-red-500">*</span>
                         </label>
                         <input
@@ -72,7 +100,7 @@ const ClientForm = () => {
 
                     {/* Contact Person */}
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                             Primary Contact <span className="text-red-500">*</span>
                         </label>
                         <input
@@ -88,7 +116,7 @@ const ClientForm = () => {
 
                     {/* Email */}
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                             Email Address <span className="text-red-500">*</span>
                         </label>
                         <input
@@ -104,7 +132,7 @@ const ClientForm = () => {
 
                     {/* Phone */}
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                             Phone Number
                         </label>
                         <input
@@ -119,7 +147,7 @@ const ClientForm = () => {
 
                     {/* Status */}
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                             Status
                         </label>
                         <select
@@ -135,7 +163,7 @@ const ClientForm = () => {
 
                     {/* Address */}
                     <div className="md:col-span-2">
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                             Address
                         </label>
                         <textarea
@@ -165,7 +193,7 @@ const ClientForm = () => {
                         disabled={loading}
                     >
                         <FiSave />
-                        <span>{loading ? 'Saving...' : 'Save Client'}</span>
+                        <span>{loading ? 'Saving...' : (isEditMode ? 'Update Client' : 'Save Client')}</span>
                     </button>
                 </div>
             </form>
