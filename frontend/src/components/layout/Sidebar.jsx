@@ -30,10 +30,8 @@ import { useThemeStore } from '../../store/themeStore'
 
 const menuItems = [
     { name: 'Dashboard', path: '/dashboard', icon: FiHome },
-    { name: 'Clients', path: '/clients', icon: FiUsers },
+    // Core Modules
     { name: 'Projects', path: '/projects', icon: FiFolder },
-    { name: 'Invoices', path: '/invoices', icon: FiFileText },
-    { name: 'Estimates', path: '/estimates', icon: FiDollarSign },
     { name: 'Resources', path: '/resources', icon: FiBox },
     { name: 'Suppliers', path: '/suppliers', icon: FiTruck },
     { name: 'Subcontractors', path: '/subcontractors', icon: FiTool },
@@ -41,12 +39,18 @@ const menuItems = [
     { name: 'Safety', path: '/safety', icon: FiShield },
     { name: 'Time Tracking', path: '/time-tracking', icon: FiClock },
     { name: 'Cost Management', path: '/cost-management', icon: FiPieChart },
-    { name: 'Tasks', path: '/tasks', icon: FiCheckSquare },
+    // CRM
+    { name: 'Clients', path: '/clients', icon: FiUsers },
     { name: 'Leads', path: '/leads', icon: FiUserPlus },
     { name: 'Proposals', path: '/proposals', icon: FiFile },
     { name: 'Contracts', path: '/contracts', icon: FiCreditCard },
+    // Finance
+    { name: 'Invoices', path: '/invoices', icon: FiFileText },
+    { name: 'Estimates', path: '/estimates', icon: FiDollarSign },
     { name: 'Expenses', path: '/expenses', icon: FiTrendingUp },
     { name: 'Payments', path: '/payments', icon: FiDollarSign },
+    // Support & Admin
+    { name: 'Tasks', path: '/tasks', icon: FiCheckSquare },
     { name: 'Tickets', path: '/tickets', icon: FiHeadphones },
     { name: 'Reports', path: '/reports', icon: FiBarChart2 },
     { name: 'Settings', path: '/settings', icon: FiSettings },

@@ -10,8 +10,9 @@ const PaymentForm = () => {
     const { addPayment, invoices } = useAppStore()
     const [loading, setLoading] = useState(false)
     
-    // Filter only unpaid or overdue invoices
-    const dueInvoices = invoices.filter(inv => inv.status !== 'Paid')
+    // Show all invoices (sorted by newest first conceptually, or just list them)
+    // We reverse to show newest invoices at top if the array is chronological
+    const dueInvoices = [...invoices].reverse()
 
     const [formData, setFormData] = useState({
         invoice: '',
@@ -95,7 +96,7 @@ const PaymentForm = () => {
                                 </option>
                             ))}
                         </select>
-                        <p className="text-xs text-gray-500 mt-1 dark:text-gray-400">Only showing Unpaid and Overdue invoices.</p>
+                        <p className="text-xs text-gray-500 mt-1 dark:text-gray-400">Showing all invoices (including Paid)</p>
                     </div>
 
                     {/* Date */}

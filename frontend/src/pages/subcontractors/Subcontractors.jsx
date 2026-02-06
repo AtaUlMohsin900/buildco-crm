@@ -15,7 +15,9 @@ const Subcontractors = () => {
             header: 'Company Name',
             cell: (info) => (
                 <div className="font-medium text-gray-900 dark:text-gray-100">
-                    {info.getValue()}
+                    <Link to={`/subcontractors/${info.row.original.id}`} className="hover:text-primary-600 dark:hover:text-primary-400">
+                        {info.getValue()}
+                    </Link>
                 </div>
             ),
         }),
